@@ -3,4 +3,5 @@
 This playbook for deploying lamp server
 
 #Ansible Playbook usage
-```ansible-playbook -i hosts apache.yml -s -K```
+
+``` ansible-playbook -i hosts apache.yml -s -K ```
