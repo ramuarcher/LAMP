@@ -2,5 +2,6 @@
   gather_facts: False
   remote_user: ramu
   roles: 
-    - mysql
-    - apache
+#    - mysql
+#    - apache
+    - php
