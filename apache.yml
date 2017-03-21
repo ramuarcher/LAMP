@@ -1,0 +1,13 @@
+- hosts: vm 
+  gather_facts: False
+  remote_user: ramu
+  
+  tasks: 
+    - name: Apt Udpate
+      apt: update_cache=yes
+    - name: Install Apache2
+      apt: name=apache2 state=present
+    - name: Ensure apache2 is restart
+      service: name=apache2 state=restarted
+    - name: copy my index file
+      copy: src=index.html dest=/var/www/html/ mode=0600 owner=www-data group=www-data
