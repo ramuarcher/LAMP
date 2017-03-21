@@ -1,0 +1,21 @@
+ - name: Apt update
+   apt: update_cache=yes
+ - name: Install Mysql
+   apt: name={{ item }} state=present
+   with_items: 
+     - python-mysqldb
+     - mysql-server
+ - name: Copy the root credentials as .my.cnf file
+   template: src=root.cnf.j2 dest=~/.my.cnf mode=0600
+ - name: create database
+   mysql_user:
+     login_user: root
+     login_password: test
+     name: bob
+     password: 12345
+     priv: '*.*:ALL'
+     state: present
+ - name: Create DB
+   mysql_db: name=db1 state=present
+   notify:
+     - Restart MySQL 
